@@ -32,6 +32,10 @@ function desordenar(array) {
     }
 }
 
+function verificar() {
+    
+}
+
 function mover() {
     desordenar(rueda)
     desordenar(rueda[0])
