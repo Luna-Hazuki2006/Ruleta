@@ -5,10 +5,19 @@ const rueda = [
 ]
 
 function mostrar() {
-    for (let i = 1; i <= 3; i++) {
-        for (let j = 1; j <= 3; j++) {
-            const celda = document.getElementById(i + "" + j)
-            celda.innerText = rueda[i - 1][j - 1]
+    let sonido = new Audio("assets/ruleta.mp3")
+    sonido.play()
+    let celdas = document.getElementsByTagName("dt")
+    for (const celda of celdas) {
+        celda.innerText = "❓"
+    }
+    setTimeout(demostrar, 4050)
+    function demostrar() {
+        for (let i = 1; i <= 3; i++) {
+            for (let j = 1; j <= 3; j++) {
+                const celda = document.getElementById(i + "" + j)
+                celda.innerText = rueda[i - 1][j - 1]
+            }
         }
     }
 }
