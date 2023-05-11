@@ -34,44 +34,36 @@ function desordenar(array) {
 }
 
 function verificar() {
+    let racha = ""
     let celdas = document.getElementsByTagName("td")
     for (let i = 0; i <= 6; i+=3) {
         if (celdas.item(i).innerText == celdas.item(i + 1).innerText && 
             celdas.item(i + 2).innerText == celdas.item(i).innerText) {
             console.log("Lo lograste, ¡ganaste! (en horizontal)");
-            Swal.fire(
-                "¡Ganaste!", 
-                "Lo lograste en una racha horizontal :D", 
-                "success"
-            )
+            racha = "horizontal"
         }
     }
     for (let i = 0; i <= 2; i++) {
         if (celdas.item(i).innerText == celdas.item(i + 3).innerText && 
             celdas.item(i + 6).innerText == celdas.item(i).innerText) {
             console.log("lo lograste, ¡ganaste! (en vertical)");
-            Swal.fire(
-                "¡Ganaste!", 
-                "Lo lograste en una racha vertical :D", 
-                "success"
-            )
+            racha = "vertical"
         }
     }
     if (celdas.item(0).innerText == celdas.item(4).innerText && 
         celdas.item(8).innerText == celdas.item(0).innerText) {
         console.log("lo lograste, ¡ganaste! (en diagonal principal)");
-        Swal.fire(
-            "¡Ganaste!", 
-            "Lo lograste en una racha diagonal principal :D", 
-            "success"
-        )
+        racha = "diagonal principal"
     }
     if (celdas.item(2).innerText == celdas.item(4).innerText && 
         celdas.item(6).innerText == celdas.item(2).innerText) {
         console.log("lo lograste, ¡ganaste! (en diagonal secundaria)");
+        racha = "diagonal secundaria"
+    }
+    if (racha.length != 0) {
         Swal.fire(
             "¡Ganaste!", 
-            "Lo lograste en una racha diagonal secundaria :D", 
+            "Lo lograste en una racha " + racha + " :D", 
             "success"
         )
     }
