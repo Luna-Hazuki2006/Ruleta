@@ -36,13 +36,10 @@ function desordenar(array) {
 function verificar() {
     let celdas = document.getElementsByTagName("td")
     for (let i = 0; i <= 6; i+=3) {
-        // if (celdas.item(i).innerText == celdas.item(i + 1).innerText && 
-        //     celdas.item(i + 2).innerText == celdas.item(i).innerText) {
-        //     console.log("Lo lograste, ¡ganaste!");
-        // }
-        console.log(celdas.item(i));
-        console.log(celdas.item(i + 1));
-        console.log(celdas.item(i + 2));
+        if (celdas.item(i).innerText == celdas.item(i + 1).innerText && 
+            celdas.item(i + 2).innerText == celdas.item(i).innerText) {
+            console.log("Lo lograste, ¡ganaste!");
+        }
     }
 }
 
