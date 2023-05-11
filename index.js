@@ -33,6 +33,10 @@ function desordenar(array) {
     }
 }
 
+function revisar(original, nueva) {
+    return (original.length != 0) ? original + " y " + nueva : nueva
+}
+
 function verificar() {
     let racha = ""
     let celdas = document.getElementsByTagName("td")
@@ -40,25 +44,25 @@ function verificar() {
         if (celdas.item(i).innerText == celdas.item(i + 1).innerText && 
             celdas.item(i + 2).innerText == celdas.item(i).innerText) {
             console.log("Lo lograste, ¡ganaste! (en horizontal)");
-            racha = "horizontal"
+            racha = revisar(racha, "horizontal")
         }
     }
     for (let i = 0; i <= 2; i++) {
         if (celdas.item(i).innerText == celdas.item(i + 3).innerText && 
             celdas.item(i + 6).innerText == celdas.item(i).innerText) {
             console.log("lo lograste, ¡ganaste! (en vertical)");
-            racha = "vertical"
+            racha = revisar(racha, "vertical")
         }
     }
     if (celdas.item(0).innerText == celdas.item(4).innerText && 
         celdas.item(8).innerText == celdas.item(0).innerText) {
         console.log("lo lograste, ¡ganaste! (en diagonal principal)");
-        racha = "diagonal principal"
+        racha = revisar(racha, "diagonal principal")
     }
     if (celdas.item(2).innerText == celdas.item(4).innerText && 
         celdas.item(6).innerText == celdas.item(2).innerText) {
         console.log("lo lograste, ¡ganaste! (en diagonal secundaria)");
-        racha = "diagonal secundaria"
+        racha = revisar(racha, "diagonal secundaria")
     }
     if (racha.length != 0) {
         Swal.fire(
