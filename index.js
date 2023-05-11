@@ -38,8 +38,42 @@ function verificar() {
     for (let i = 0; i <= 6; i+=3) {
         if (celdas.item(i).innerText == celdas.item(i + 1).innerText && 
             celdas.item(i + 2).innerText == celdas.item(i).innerText) {
-            console.log("Lo lograste, ¡ganaste!");
+            console.log("Lo lograste, ¡ganaste! (en horizontal)");
+            Swal.fire(
+                "¡Ganaste!", 
+                "Lo lograste en una racha horizontal :D", 
+                "success"
+            )
         }
+    }
+    for (let i = 0; i <= 2; i++) {
+        if (celdas.item(i).innerText == celdas.item(i + 3).innerText && 
+            celdas.item(i + 6).innerText == celdas.item(i).innerText) {
+            console.log("lo lograste, ¡ganaste! (en vertical)");
+            Swal.fire(
+                "¡Ganaste!", 
+                "Lo lograste en una racha vertical :D", 
+                "success"
+            )
+        }
+    }
+    if (celdas.item(0).innerText == celdas.item(4).innerText && 
+        celdas.item(8).innerText == celdas.item(0).innerText) {
+        console.log("lo lograste, ¡ganaste! (en diagonal principal)");
+        Swal.fire(
+            "¡Ganaste!", 
+            "Lo lograste en una racha diagonal principal :D", 
+            "success"
+        )
+    }
+    if (celdas.item(2).innerText == celdas.item(4).innerText && 
+        celdas.item(6).innerText == celdas.item(2).innerText) {
+        console.log("lo lograste, ¡ganaste! (en diagonal secundaria)");
+        Swal.fire(
+            "¡Ganaste!", 
+            "Lo lograste en una racha diagonal secundaria :D", 
+            "success"
+        )
     }
 }
 
