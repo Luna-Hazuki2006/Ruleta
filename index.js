@@ -77,7 +77,10 @@ function verificar() {
             "Lo lograste en una racha " + racha + " :D", 
             "success"
         )
-        
+        let nuevas = (racha.split('y').length - 1) * 20
+        monedas += nuevas
+        actualizar()
+        ganar(nuevas)
         
     } else {
         monedas--
@@ -110,3 +113,9 @@ function perder() {
         text: '¡Oh no! perdiste 1 💰'
     })
 }
+
+function inicio() {
+    actualizar()
+}
+
+inicio()
