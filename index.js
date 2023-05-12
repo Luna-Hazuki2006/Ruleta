@@ -1,3 +1,5 @@
+let monedas = 20
+
 const rueda = [
     ['🐈', '🐕', '🐤', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐕', '🐤', '🐈', '🐏', '🐢', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
@@ -37,6 +39,11 @@ function revisar(original, nueva) {
     return (original.length != 0) ? original + " y " + nueva : nueva
 }
 
+function actualizar() {
+    let texto = document.getElementById("monedas")
+    texto.innerText = 'Monedas que tienes: ' + monedas + ' 💰'
+}
+
 function verificar() {
     let racha = ""
     let celdas = document.getElementsByTagName("td")
@@ -70,6 +77,12 @@ function verificar() {
             "Lo lograste en una racha " + racha + " :D", 
             "success"
         )
+        
+        
+    } else {
+        monedas--
+        actualizar()
+        perder()
     }
 }
 
@@ -80,4 +93,20 @@ function mover() {
     desordenar(rueda[2])
     mostrar()
     console.log(rueda);
+}
+
+function ganar(ganadas) {
+    Swal.fire({
+        icon: 'success',
+        title: '¡Ganaste!',
+        text: 'Ganaste ' + ganadas + ' 💰'
+    })
+}
+
+function perder() {
+    Swal.fire({
+        icon: 'info', 
+        title: '¡Mejor suerte la próxima!', 
+        text: '¡Oh no! perdiste 1 💰'
+    })
 }
