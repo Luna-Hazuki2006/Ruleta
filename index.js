@@ -72,11 +72,9 @@ function verificar() {
         racha = revisar(racha, "diagonal secundaria")
     }
     if (racha.length != 0) {
-        Swal.fire(
-            "¡Ganaste!", 
-            "Lo lograste en una racha " + racha + " :D", 
-            "success"
-        )
+        rachas(racha)
+        let campana = new Audio("assets/campanita.wav")
+        campana.play()
         let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * 20) : 20
         monedas += nuevas
         actualizar()
@@ -96,6 +94,14 @@ function mover() {
     desordenar(rueda[2])
     mostrar()
     console.log(rueda);
+}
+
+function rachas(racha) {
+    Swal.fire({
+        title: '¡Ganaste!', 
+        text: 'Lo lograste en una racha ' + racha + ' :D', 
+        icon: 'success'
+    })
 }
 
 function ganar(ganadas) {
