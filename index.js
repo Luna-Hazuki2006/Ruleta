@@ -87,6 +87,10 @@ function verificar() {
     }
 }
 
+function acabar() {
+    
+}
+
 function mover() {
     desordenar(rueda)
     desordenar(rueda[0])
@@ -122,6 +126,7 @@ function perder() {
 
 function inicio() {
     actualizar()
+    
 }
 
 inicio()
