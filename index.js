@@ -1,4 +1,4 @@
-let monedas = 20
+let monedas = 10
 
 const rueda = [
     ['🐈', '🐕', '🐤', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
@@ -75,7 +75,7 @@ function verificar() {
         rachas(racha)
         let campana = new Audio("assets/campanita.wav")
         campana.play()
-        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * 20) : 20
+        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * 10) : 10
         monedas += nuevas
         actualizar()
         ganar(nuevas)
