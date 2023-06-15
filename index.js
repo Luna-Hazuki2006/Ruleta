@@ -87,6 +87,10 @@ function verificar() {
     }
 }
 
+function name(params) {
+    
+}
+
 function mover() {
     desordenar(rueda)
     desordenar(rueda[0])
