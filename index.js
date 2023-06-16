@@ -55,7 +55,7 @@ function demostrar() {
 }
 
 /*
-Se desordena todo el arreglo de los animales
+Se desordena una lista interna del arreglo de animales
 */
 function desordenar(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -72,6 +72,9 @@ function revisar(original, nueva) {
     return (original.length != 0) ? original + " y " + nueva : nueva
 }
 
+/*
+Se actualiza la cantidad de monedas en texto
+*/
 function actualizar() {
     let texto = document.getElementById("monedas")
     texto.innerText = 'Monedas que tienes: ' + monedas + ' 💰'
@@ -124,6 +127,9 @@ function premiar() {
     
 }
 
+/*
+
+*/
 function mover() {
     desordenar(rueda)
     desordenar(rueda[0])
