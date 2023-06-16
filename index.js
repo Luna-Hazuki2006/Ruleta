@@ -1,15 +1,33 @@
 let monedas = 10
 
+/*
+Arreglo que contiene todoas los animales de la ruleta
+*/
 const rueda = [
     ['🐈', '🐕', '🐤', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐕', '🐤', '🐈', '🐏', '🐢', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐤', '🐈', '🐕', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈']
 ]
 
+/*
+Clase que contiene todos los premios
+*/
 const premios = {
-    
+    bajo: {
+        minimo: 0
+    }, 
+    mendio: {
+
+    }, 
+    alto: {
+        
+    }
 }
 
+/*
+Función para mostrar la "animación" de rodar la ruleta, 
+y que se escuche el sonido de la ruleta, durando 7,4 segundos
+*/
 function mostrar() {
     let sonido = new Audio("assets/ruleta.mp3")
     sonido.play()
