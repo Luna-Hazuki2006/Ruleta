@@ -40,6 +40,10 @@ function mostrar() {
     setTimeout(demostrar, 7400)
 }
 
+/*
+Le añade a la ruleta los animales dependiendo de la id de las casillas 
+en el arreglo original, después se procede a verificar el puntaje
+*/
 function demostrar() {
     for (let i = 1; i <= 3; i++) {
         for (let j = 1; j <= 3; j++) {
@@ -50,6 +54,9 @@ function demostrar() {
     verificar()
 }
 
+/*
+Se desordena todo el arreglo de los animales
+*/
 function desordenar(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -57,6 +64,10 @@ function desordenar(array) {
     }
 }
 
+/*
+se le añade el texto de forma correcta dependiendo 
+de la cantidad de veces que se logró una racha
+*/
 function revisar(original, nueva) {
     return (original.length != 0) ? original + " y " + nueva : nueva
 }
