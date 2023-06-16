@@ -1,5 +1,5 @@
 const ganando = 5
-const perdiendo = 1
+const perdiendo = 5
 
 let monedas = 10
 
@@ -142,10 +142,21 @@ function verificar() {
         perder()
         if (monedas == 0) {
             derrota()
+            bloquear()
         } else if (monedas < 0) {
             deuda()
+            bloquear()
         }
     }
+}
+
+/*
+bloquea el botón para apostar
+*/
+function bloquear() {
+    const boton = document.getElementsByTagName("button")[0]
+    boton.removeAttribute("onclick")
+    boton.classList.add("prohibido")
 }
 
 function premiar() {
