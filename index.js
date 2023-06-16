@@ -79,7 +79,6 @@ function verificar() {
         monedas += nuevas
         actualizar()
         ganar(nuevas)
-        
     } else {
         monedas--
         actualizar()
@@ -89,9 +88,13 @@ function verificar() {
 
 function creacion_premios() {
     const premios = document.createElement("div")
-    premios.style.backgroundColor = "red"
-    premios.innerHTML = "<p>Unos premios para ti</p>"
-    document.body.appendChild(premios)
+    premios.id = "premios"
+    premios.classList.add("invisible")
+    const boton = document.getElementsByTagName("button")[document.getElementsByTagName("button").length - 1]
+    boton.setAttribute("onclick", "premiar();")
+    const ultimo = document.body.children[document.body.children.length -2]
+    document.body.replaceChild(premios, ultimo)
+    document.body.appendChild(ultimo)
 }
 
 function premiar() {
