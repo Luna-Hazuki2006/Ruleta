@@ -1,3 +1,6 @@
+const ganando = 5
+const perdiendo = 1
+
 let monedas = 10
 
 /*
@@ -14,13 +17,22 @@ Clase que contiene todos los premios
 */
 const premios = {
     bajo: {
-        minimo: 0
+        minimo: 1, 
+        maximo: 10, 
+        lista: [
+            {
+                nombre: "té de burbujas", 
+                imagen: "assets/burbujas_te.png"
+            }
+        ]
     }, 
     mendio: {
-
+        minimo: 11, 
+        maximo: 20
     }, 
     alto: {
-        
+        minimo: 21, 
+        maximo: 30
     }
 }
 
@@ -119,15 +131,20 @@ function verificar() {
         rachas(racha)
         let campana = new Audio("assets/campanita.wav")
         campana.play()
-        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * 10) : 10
+        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * ganando) : ganando
         monedas += nuevas
         actualizar()
         ganar(nuevas)
         
     } else {
-        monedas--
+        monedas -= perdiendo
         actualizar()
         perder()
+        if (monedas == 0) {
+            derrota()
+        } else if (monedas < 0) {
+            deuda()
+        }
     }
 }
 
@@ -176,7 +193,29 @@ function perder() {
     Swal.fire({
         icon: 'info', 
         title: '¡Mejor suerte la próxima!', 
-        text: '¡Oh no! perdiste 1 💰'
+        text: '¡Oh no! perdiste ' + perdiendo + ' 💰'
+    })
+}
+
+/*
+Se le anuncia al usuario que ya no puede apostar más
+*/
+function derrota() {
+    Swal.fire({
+        icon: 'info', 
+        title: 'Perdiste tu suerte', 
+        text: '¡Oh no! parece que te quedaste sin monedas,\n ahora no tienes suficientes para seguir apostando' + 
+        '\nAdemás de que estás en bancarrota, por tu seguridad,\n ya no te permitiremos seguir apostando'
+    })
+}
+
+/*
+*/
+function deuda() {
+    Swal.fire({
+        icon: 'error', 
+        title: 'Estás en problemas', 
+        text: 'Tristemente, no sólo tu suerte se ha acabado, pero ahora estás en deuda, y nos debes ' + (monedas * -1) + " 💰"
     })
 }
 
