@@ -215,8 +215,8 @@ function derrota() {
     Swal.fire({
         icon: 'info', 
         title: 'Perdiste tu suerte', 
-        text: '¡Oh no! parece que te quedaste sin monedas,\n ahora no tienes suficientes para seguir apostando' + 
-        '\nAdemás de que estás en bancarrota, por tu seguridad,\n ya no te permitiremos seguir apostando'
+        text: '¡Oh no! parece que te quedaste sin monedas,\n ahora no tienes suficientes para seguir apostando, ' + 
+        '\nademás de que estás en bancarrota, por tu seguridad,\n ya no te permitiremos seguir apostando'
     })
 }
 
