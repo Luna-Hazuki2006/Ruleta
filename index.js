@@ -98,7 +98,7 @@ function creacion_premios() {
 }
 
 function premiar() {
-    
+    const cositas = {}
 }
 
 function mover() {
