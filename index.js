@@ -21,18 +21,24 @@ const premios = {
         maximo: 10, 
         lista: [
             {
-                nombre: "té de burbujas", 
-                imagen: "assets/burbujas_te.png"
+                nombre: "Leche caliente con miel y canela", 
+                imagen: "assets/leche_de_ponyo.webp"
             }
         ]
     }, 
     mendio: {
         minimo: 11, 
-        maximo: 20
+        maximo: 20, 
     }, 
     alto: {
         minimo: 21, 
-        maximo: 30
+        maximo: 30, 
+        lista: [
+            {
+                nombre: "té de burbujas", 
+                imagen: "assets/burbujas_te.png"
+            }
+        ]
     }
 }
 
