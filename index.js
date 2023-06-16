@@ -87,7 +87,7 @@ function verificar() {
     }
 }
 
-function name(params) {
+function premiar() {
     
 }
 
