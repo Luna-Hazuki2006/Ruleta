@@ -6,6 +6,10 @@ const rueda = [
     ['🐤', '🐈', '🐕', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈']
 ]
 
+const premios = {
+    
+}
+
 function mostrar() {
     let sonido = new Audio("assets/ruleta.mp3")
     sonido.play()
