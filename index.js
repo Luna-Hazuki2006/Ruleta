@@ -1,5 +1,5 @@
 const ganando = 5
-const perdiendo = 5
+const perdiendo = 2
 
 let monedas = 10
 
