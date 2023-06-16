@@ -73,13 +73,21 @@ function revisar(original, nueva) {
 }
 
 /*
-Se actualiza la cantidad de monedas en texto
+Se actualiza el texto a la cantidad de monedas
 */
 function actualizar() {
     let texto = document.getElementById("monedas")
     texto.innerText = 'Monedas que tienes: ' + monedas + ' 💰'
 }
 
+/*
+Verifica si se tiene una (o múltiples rachas), y se guarda el tipo 
+en la variable racha, después se revisa el tipo de racha, 
+si pierde, se le quitará una cantidad de monedas;
+si se gana, se le añadirá la cantidad de monedas, 
+la cual se multiplicará dependiendo de la cantidad de rachas.
+Después se le anuncia al usuario su estado monetario y si se perdió o no
+*/
 function verificar() {
     let racha = ""
     let celdas = document.getElementsByTagName("td")
@@ -128,7 +136,7 @@ function premiar() {
 }
 
 /*
-
+Desordena cada lista dentro del arreglo de animales
 */
 function mover() {
     desordenar(rueda)
@@ -139,6 +147,9 @@ function mover() {
     console.log(rueda);
 }
 
+/*
+Se dice la o las rachas al usuario
+*/
 function rachas(racha) {
     Swal.fire({
         title: '¡Ganaste!', 
@@ -147,6 +158,9 @@ function rachas(racha) {
     })
 }
 
+/*
+Se le anuncia al usuario que ha ganado
+*/
 function ganar(ganadas) {
     Swal.fire({
         icon: 'success',
@@ -155,6 +169,9 @@ function ganar(ganadas) {
     })
 }
 
+/*
+Se le anuncia al usuario que ha perdido
+*/
 function perder() {
     Swal.fire({
         icon: 'info', 
@@ -163,6 +180,9 @@ function perder() {
     })
 }
 
+/*
+Es la función que inicia todo
+*/
 function inicio() {
     actualizar()
 }
