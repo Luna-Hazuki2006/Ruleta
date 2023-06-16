@@ -87,6 +87,13 @@ function verificar() {
     }
 }
 
+function creacion_premios() {
+    const premios = document.createElement("div")
+    premios.style.backgroundColor = "red"
+    premios.innerHTML = "<p>Unos premios para ti</p>"
+    document.body.appendChild(premios)
+}
+
 function premiar() {
     
 }
@@ -126,6 +133,7 @@ function perder() {
 
 function inicio() {
     actualizar()
+    creacion_premios()
 }
 
 inicio()
