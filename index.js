@@ -1,11 +1,51 @@
+const ganando = 5
+const perdiendo = 2
+
 let monedas = 10
 
+/*
+Arreglo que contiene todoas los animales de la ruleta
+*/
 const rueda = [
     ['🐈', '🐕', '🐤', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐕', '🐤', '🐈', '🐏', '🐢', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐤', '🐈', '🐕', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈']
 ]
 
+/*
+Clase que contiene todos los premios
+*/
+const premios = {
+    bajo: {
+        minimo: 1, 
+        maximo: 10, 
+        lista: [
+            {
+                nombre: "Leche caliente con miel y canela", 
+                imagen: "assets/leche_de_ponyo.webp"
+            }
+        ]
+    }, 
+    mendio: {
+        minimo: 11, 
+        maximo: 20, 
+    }, 
+    alto: {
+        minimo: 21, 
+        maximo: 30, 
+        lista: [
+            {
+                nombre: "té de burbujas", 
+                imagen: "assets/burbujas_te.png"
+            }
+        ]
+    }
+}
+
+/*
+Función para mostrar la "animación" de rodar la ruleta, 
+y que se escuche el sonido de la ruleta, durando 7,4 segundos
+*/
 function mostrar() {
     let sonido = new Audio("assets/ruleta.mp3")
     sonido.play()
@@ -18,6 +58,10 @@ function mostrar() {
     setTimeout(demostrar, 7400)
 }
 
+/*
+Le añade a la ruleta los animales dependiendo de la id de las casillas 
+en el arreglo original, después se procede a verificar el puntaje
+*/
 function demostrar() {
     for (let i = 1; i <= 3; i++) {
         for (let j = 1; j <= 3; j++) {
@@ -28,6 +72,9 @@ function demostrar() {
     verificar()
 }
 
+/*
+Se desordena una lista interna del arreglo de animales
+*/
 function desordenar(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -35,15 +82,30 @@ function desordenar(array) {
     }
 }
 
+/*
+se le añade el texto de forma correcta dependiendo 
+de la cantidad de veces que se logró una racha
+*/
 function revisar(original, nueva) {
     return (original.length != 0) ? original + " y " + nueva : nueva
 }
 
+/*
+Se actualiza el texto a la cantidad de monedas
+*/
 function actualizar() {
     let texto = document.getElementById("monedas")
     texto.innerText = 'Monedas que tienes: ' + monedas + ' 💰'
 }
 
+/*
+Verifica si se tiene una (o múltiples rachas), y se guarda el tipo 
+en la variable racha, después se revisa el tipo de racha, 
+si pierde, se le quitará una cantidad de monedas;
+si se gana, se le añadirá la cantidad de monedas, 
+la cual se multiplicará dependiendo de la cantidad de rachas.
+Después se le anuncia al usuario su estado monetario y si se perdió o no
+*/
 function verificar() {
     let racha = ""
     let celdas = document.getElementsByTagName("td")
@@ -75,22 +137,41 @@ function verificar() {
         rachas(racha)
         let campana = new Audio("assets/campanita.wav")
         campana.play()
-        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * 10) : 10
+        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * ganando) : ganando
         monedas += nuevas
         actualizar()
         ganar(nuevas)
         
     } else {
-        monedas--
+        monedas -= perdiendo
         actualizar()
         perder()
+        if (monedas == 0) {
+            derrota()
+            bloquear()
+        } else if (monedas < 0) {
+            deuda()
+            bloquear()
+        }
     }
 }
 
-function acabar() {
+/*
+bloquea el botón para apostar
+*/
+function bloquear() {
+    const boton = document.getElementsByTagName("button")[0]
+    boton.removeAttribute("onclick")
+    boton.classList.add("prohibido")
+}
+
+function premiar() {
     
 }
 
+/*
+Desordena cada lista dentro del arreglo de animales
+*/
 function mover() {
     desordenar(rueda)
     desordenar(rueda[0])
@@ -100,6 +181,9 @@ function mover() {
     console.log(rueda);
 }
 
+/*
+Se dice la o las rachas al usuario
+*/
 function rachas(racha) {
     Swal.fire({
         title: '¡Ganaste!', 
@@ -108,6 +192,9 @@ function rachas(racha) {
     })
 }
 
+/*
+Se le anuncia al usuario que ha ganado
+*/
 function ganar(ganadas) {
     Swal.fire({
         icon: 'success',
@@ -116,14 +203,42 @@ function ganar(ganadas) {
     })
 }
 
+/*
+Se le anuncia al usuario que ha perdido
+*/
 function perder() {
     Swal.fire({
         icon: 'info', 
         title: '¡Mejor suerte la próxima!', 
-        text: '¡Oh no! perdiste 1 💰'
+        text: '¡Oh no! perdiste ' + perdiendo + ' 💰'
     })
 }
 
+/*
+Se le anuncia al usuario que ya no puede apostar más
+*/
+function derrota() {
+    Swal.fire({
+        icon: 'info', 
+        title: 'Perdiste tu suerte', 
+        text: '¡Oh no! parece que te quedaste sin monedas,\n ahora no tienes suficientes para seguir apostando, ' + 
+        '\nademás de que estás en bancarrota, por tu seguridad,\n ya no te permitiremos seguir apostando'
+    })
+}
+
+/*
+*/
+function deuda() {
+    Swal.fire({
+        icon: 'error', 
+        title: 'Estás en problemas', 
+        text: 'Tristemente, no sólo tu suerte se ha acabado, pero ahora estás en deuda, y nos debes ' + (monedas * -1) + " 💰"
+    })
+}
+
+/*
+Es la función que inicia todo
+*/
 function inicio() {
     actualizar()
     
