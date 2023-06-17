@@ -39,7 +39,7 @@ const premiosLista = {
     }, 
     alto: {
         minimo: 21, 
-        maximo: 30, 
+        maximo: 40, 
         lista: [
             {
                 nombre: "té de burbujas", 
@@ -150,7 +150,7 @@ function bloquear() {
 function creacion_premios() {
     const premios = document.createElement("div")
     premios.id = "premios"
-    premios.classList.add("invisible")
+    premios.style.visibility = "hidden"
     const boton = document.getElementsByTagName("button")[document.getElementsByTagName("button").length - 1]
     boton.setAttribute("onclick", "premiar();")
     const ultimo = document.body.children[document.body.children.length -2]
@@ -161,7 +161,7 @@ function creacion_premios() {
 function premiar() {
     bloquear()
     const premios = document.getElementById("premios")
-    premios.classList.remove('invisible')
+    premios.style.visibility = "visible"
     let lista = [premiosLista.bajo, premiosLista.medio, premiosLista.alto]
     for (const tipo of lista) {
         if (monedas >= tipo.minimo && monedas <= tipo.maximo) {
