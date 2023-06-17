@@ -1,10 +1,55 @@
+const ganando = 5
+const perdiendo = 2
+
 let monedas = 10
 
+/*
+Arreglo que contiene todoas los animales de la ruleta
+*/
 const rueda = [
     ['🐈', '🐕', '🐤', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐕', '🐤', '🐈', '🐏', '🐢', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈'], 
     ['🐤', '🐈', '🐕', '🐢', '🐏', '🐏', '🐏', '🐢', '🐢', '🐕', '🐕', '🐈', '🐈']
 ]
+
+const premiosLista = {
+    bajo: {
+        minimo: 1, 
+        maximo: 10, 
+        lista: [
+            {
+                nombre: "Leche caliente con miel y canela", 
+                descripcion: "Una bebida agradable para empezar el día, " + 
+                '\nesa es la leche caliente con miel y canela', 
+                imagen: "assets/leche_de_ponyo.webp"
+            }
+        ]
+    }, 
+    medio: {
+        minimo: 11, 
+        maximo: 20, 
+        lista: [
+            {
+                nombre: "Caramel Macchiato Frappuccino", 
+                descripcion: 'Una bebida agradable para un mediodía, ' + 
+                '\nese es el Caramel Macchiato Frappucino', 
+                imagen: "assets/frapuchino.webp"
+            }
+        ]
+    }, 
+    alto: {
+        minimo: 21, 
+        maximo: 30, 
+        lista: [
+            {
+                nombre: "té de burbujas", 
+                descripcion: 'Una bebida agradable para terminar un día, ' + 
+                '\nese es el té de burbujas', 
+                imagen: "assets/burbujas_te.png"
+            }
+        ]
+    }
+}
 
 function mostrar() {
     let sonido = new Audio("assets/ruleta.mp3")
@@ -98,7 +143,27 @@ function creacion_premios() {
 }
 
 function premiar() {
-    const cositas = {}
+    const premios = document.getElementById("premios")
+    let lista = [premiosLista.bajo, premiosLista.medio, premiosLista.alto]
+    for (const tipo of lista) {
+        if (monedas >= tipo.minimo && monedas <= tipo.maximo) {
+            premios.innerHTML = listar(tipo.lista)
+            break
+        }
+    }
+}
+
+function listar(lista) {
+    let info = '<p>Premios (acorde a tu presupuesto)</p>'
+    for (const imagen of lista) {
+        info += `
+        <figure>
+            <img src='${imagen.imagen}' alt='${imagen.nombre}}' width='50%'>
+            <figcaption>${imagen.descripcion}</figcaption>
+        </figure>
+        `
+    }
+    return info
 }
 
 function mover() {
