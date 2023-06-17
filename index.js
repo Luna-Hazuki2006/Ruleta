@@ -213,7 +213,7 @@ function perder() {
     Swal.fire({
         icon: 'info', 
         title: '¡Mejor suerte la próxima!', 
-        text: '¡Oh no! perdiste 1 💰'
+        text: '¡Oh no! perdiste ' + perdiendo + ' 💰'
     })
 }
 
