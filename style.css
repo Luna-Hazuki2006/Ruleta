@@ -30,3 +30,6 @@ button {
 .prohibido {
     background-color: brown;
 }
+.invisible {
+    visibility: hidden;
+}
