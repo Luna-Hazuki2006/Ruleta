@@ -131,6 +131,15 @@ function verificar() {
     }
 }
 
+/*
+bloquea el botón para apostar
+*/
+function bloquear() {
+    const boton = document.getElementsByTagName("button")[0]
+    boton.removeAttribute("onclick")
+    boton.classList.add("prohibido")
+}
+
 function creacion_premios() {
     const premios = document.createElement("div")
     premios.id = "premios"
