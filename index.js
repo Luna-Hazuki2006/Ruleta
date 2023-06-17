@@ -29,6 +29,12 @@ const premios = {
     mendio: {
         minimo: 11, 
         maximo: 20, 
+        lista: [
+            {
+                nombre: "Caramel Macchiato Frappuccino", 
+                imagen: "assets/frapuchino.webp"
+            }
+        ]
     }, 
     alto: {
         minimo: 21, 
