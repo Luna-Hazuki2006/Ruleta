@@ -163,6 +163,7 @@ function bloquear() {
     const boton = document.getElementsByTagName("button")[0]
     boton.removeAttribute("onclick")
     boton.classList.add("prohibido")
+    // Pequeño
 }
 
 function premiar() {
