@@ -26,7 +26,7 @@ const premios = {
             }
         ]
     }, 
-    mendio: {
+    medio: {
         minimo: 11, 
         maximo: 20, 
         lista: [
