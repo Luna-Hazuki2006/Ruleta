@@ -159,6 +159,7 @@ function creacion_premios() {
 }
 
 function premiar() {
+    bloquear()
     const premios = document.getElementById("premios")
     premios.classList.remove('invisible')
     let lista = [premiosLista.bajo, premiosLista.medio, premiosLista.alto]
