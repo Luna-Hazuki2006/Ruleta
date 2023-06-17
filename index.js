@@ -144,6 +144,7 @@ function creacion_premios() {
 
 function premiar() {
     const premios = document.getElementById("premios")
+    premios.classList.remove('invisible')
     let lista = [premiosLista.bajo, premiosLista.medio, premiosLista.alto]
     for (const tipo of lista) {
         if (monedas >= tipo.minimo && monedas <= tipo.maximo) {
@@ -160,7 +161,7 @@ function listar(lista) {
         <figure>
             <img src='${imagen.imagen}' alt='${imagen.nombre}}' width='50%'>
             <figcaption>${imagen.descripcion}</figcaption>
-        </figure>
+            </figure>
         `
     }
     return info
