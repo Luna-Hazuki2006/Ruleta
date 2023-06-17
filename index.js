@@ -120,12 +120,12 @@ function verificar() {
         rachas(racha)
         let campana = new Audio("assets/campanita.wav")
         campana.play()
-        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * 10) : 10
+        let nuevas = (racha.includes('y')) ? ((racha.split('y').length) * ganando) : ganando
         monedas += nuevas
         actualizar()
         ganar(nuevas)
     } else {
-        monedas--
+        monedas -= perdiendo
         actualizar()
         perder()
     }
