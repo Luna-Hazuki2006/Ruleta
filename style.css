@@ -29,3 +29,6 @@ button {
 .invisible {
     visibility: hidden;
 }
+.prohibido {
+    background-color: brown;
+}
