@@ -153,6 +153,7 @@ function creacion_premios() {
     premios.style.visibility = "hidden"
     const boton = document.getElementsByTagName("button")[document.getElementsByTagName("button").length - 1]
     boton.setAttribute("onclick", "premiar();")
+    boton.innerText = "Cambiar por premio"
     const ultimo = document.body.children[document.body.children.length -2]
     document.body.replaceChild(premios, ultimo)
     document.body.appendChild(ultimo)
